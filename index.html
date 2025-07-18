@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>ระบบจองคิวรถส่งสินค้า</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Prompt:400,600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="login-section" class="centered">
+    <div class="login-box">
+      <h2>เข้าสู่ระบบจองคิวรถ</h2>
+      <input type="text" id="login-user" placeholder="Username">
+      <input type="password" id="login-pass" placeholder="Password">
+      <button id="login-btn">Login</button>
+      <div id="login-error"></div>
+    </div>
+  </div>
+
+  <div id="main-app" style="display:none;">
+    <header>
+      <h1>ระบบจองคิวรถส่งสินค้า</h1>
+      <button id="logout-btn">Logout</button>
+    </header>
+    <nav>
+      <button class="nav-btn active" data-section="booking-section">จองคิว</button>
+      <button class="nav-btn" data-section="dashboard-section">Dashboard</button>
+      <button class="nav-btn" data-section="product-section">สินค้า</button>
+    </nav>
+
+    <section id="booking-section">
+      <div class="section-title">
+        <h2>จองคิวรถ (เลือกวัน/เวลา)</h2>
+        <input type="date" id="booking-date">
+      </div>
+      <div id="slot-grid"></div>
+    </section>
+
+    <!-- Modal แบบ Popup สำหรับจองคิว -->
+    <div id="booking-modal" class="modal">
+      <div class="modal-content">
+        <span class="close" id="close-modal">&times;</span>
+        <h2>จองคิวรถ</h2>
+        <form id="booking-form">
+          <label>ชื่อผู้จอง <input type="text" id="name" required></label>
+          <label>ทะเบียนรถ <input type="text" id="plate" required></label>
+          <label>Plant ต้นทาง
+            <select id="plant" required>
+              <option value="">เลือก Plant</option>
+              <option>BKD</option><option>KSN</option><option>BP</option><option>Neotech</option>
+              <option>SWI</option><option>BKS</option><option>BLN</option><option>KRR</option>
+              <option>CYY</option><option>UBS</option><option>ETL</option><option>SMS</option>
+              <option>WGC</option><option>DOMESTICS</option>
+            </select>
+          </label>
+          <label>เบอร์โทรศัพท์ <input type="tel" id="phone" required pattern="[0-9]{9,}" maxlength="15"></label>
+          <label>Flatbed Type
+            <select id="flatbed" required>
+              <option value="">เลือกประเภท</option>
+              <option>JB on pallet</option>
+              <option>JB looseload</option>
+              <option>JB looseload+change tag</option>
+              <option>LOCAL 4W-6W</option>
+              <option>LOCALFlatbed</option>
+              <option>Consumabels</option>
+              <option>Product&Pallet return to Plant</option>
+            </select>
+          </label>
+          <div id="material-table">
+            <label>Material, Batch, Qty, Ton</label>
+            <table>
+              <thead>
+                <tr><th>Material</th><th>Batch</th><th>Qty</th><th>Ton</th><th></th></tr>
+              </thead>
+              <tbody id="material-tbody"></tbody>
+            </table>
+            <button type="button" id="add-material">เพิ่มรายการ</button>
+          </div>
+          <input type="hidden" id="selected-slot">
+          <input type="hidden" id="selected-date">
+          <button type="submit" id="submit-booking">จองคิว</button>
+        </form>
+        <div id="booking-form-error"></div>
+      </div>
+    </div>
+
+    <section id="dashboard-section" style="display:none;">
+      <div class="section-title">
+        <h2>Dashboard สถานะการจองคิว</h2>
+        <div>
+          <label>ดูข้อมูล: </label>
+          <select id="dashboard-view">
+            <option value="daily">รายวัน</option>
+            <option value="weekly">รายสัปดาห์</option>
+            <option value="monthly">รายเดือน</option>
+          </select>
+          <input type="date" id="dashboard-date">
+          <button id="export-excel">Export Excel</button>
+        </div>
+      </div>
+      <div id="dashboard-summary"></div>
+      <div id="dashboard-chart"></div>
+      <div id="dashboard-table"></div>
+    </section>
+
+    <section id="product-section" style="display:none;">
+      <div class="section-title">
+        <h2>สินค้า (Product)</h2>
+        <input type="date" id="product-date">
+      </div>
+      <div id="product-table"></div>
+    </section>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
