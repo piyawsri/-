@@ -1,7 +1,7 @@
 // App config
 const ADMIN = {user: "admin", pass: "1234"};
 const USER = {user: "user", pass: "1234"};
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyLAsIqjBPtOFxcev1jflFNwDRzMyB7E_2hJTBCkYkQUzvb699PqcCm8Vl4Uo6SRaQH/exec";
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwmmyHakpIS8jjSLhbTuO6SzUS9oadCtLrYT_VFh4dNCgeRPBIQSZOnV0i-zFUu8DYw2w/exec";
 const PLANTS = ["BKD","KSN","BP","Neotech","SWI","BKS","BLN","KRR","CYY","UBS","ETL","SMS","WGC","DOMESTICS"];
 const FLATBED_TYPES_1SLOT = ["JB on pallet","LOCALFlatbed","Product&Pallet return to Plant","LOCAL 4W-6W","Consumabels"];
 const FLATBED_TYPES_2SLOT = ["JB looseload","JB looseload+change tag"];
